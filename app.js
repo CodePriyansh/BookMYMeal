@@ -4,6 +4,7 @@ const path=require('path');
 const adminRouter =require('./routes/admin.route');
 const userRouter = require('./routes/user.route');
 const mongoose=require('mongoose');
+const port = process.env.PORT || 5555
 
 
 
@@ -19,7 +20,7 @@ module.exports=mongoose.connection;
 app.use('/api/admin',adminRouter);
 app.use('/api/user',userRouter);
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("server Started");
 })
 
