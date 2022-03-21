@@ -9,11 +9,9 @@ exports.addToCart= async (request,response)=>{
     //   return response.status(400).json({ errors: errors.array()})
     // }
 
-   var cart =await Cart.findOne({userId:request.body.userId})
-    
+   var cart = await Cart.findOne({userId:request.body.userId})
     if(!cart)
       cart=new Cart({userId:request.body.userId});
-
       cart.foodList.push(request.body.productId)
       cart.save()
     .then(results=>{

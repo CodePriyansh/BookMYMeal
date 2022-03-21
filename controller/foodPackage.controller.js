@@ -1,4 +1,4 @@
-const foodpackage = require("../model/foodpackage.model");
+const foodpackage = require("../model/PackacgeAndItems.model");
 // const {validationResult} = require('express-validator');
 const { response } = require("express");
 
@@ -46,7 +46,7 @@ exports.viewfoodbynamelist=(request,response,next)=>{
   });
 }
 
-exports.viewcategorylist = (request,response,next)=>{
+exports.viewcategoryWise = (request,response,next)=>{
   foodpackage.find({categoryId:request.params.id})
   .then(results=>{
     return response.status(200).json(results);

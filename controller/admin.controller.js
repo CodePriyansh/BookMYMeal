@@ -1,6 +1,7 @@
 const Admin=require('../model/admin.model');
 // const {validationResult} = require('express-validator');
 const { response } = require('express');
+const User = require("../model/user.model")
 
 exports.signup=(request,response)=>{
     // const errors= validationResult(request);
@@ -9,10 +10,12 @@ exports.signup=(request,response)=>{
     // }
     let email=request.body.email;
     let password=request.body.password;
+    let name=request.body.name;
 
     Admin.create({
         email:email,
-        password:password
+        password:password,
+        name:name
     }).then(result=>{
         console.log(result);
         return response.status(201).json(result);
@@ -63,3 +66,31 @@ exports.updateprofile=(request,response)=>{
       return response.status(500).json({message:"something went wrong"})
     })
  }
+
+
+
+ exports.viewusers = (request, response) => {
+  User.find()
+    .then(results => {
+      console.log(results);
+      return response.status(200).json(results)
+    })
+    .catch(err => {
+      console.log(err);
+      return response.status(500).json({ message: "Error" })
+    })
+}
+
+exports.blockUser = (req,res)=>{
+
+   User.updateOne({_id:req.params.id},{
+     $set:{
+       blockeduser: true
+     }
+   }).then(result=>{
+          res.status(200).json(result)
+   }).catch(err => {
+     res.status(500).json(err)
+   })
+   
+}
