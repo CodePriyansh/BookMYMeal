@@ -12,7 +12,7 @@ exports.addToCart= async (request,response)=>{
    var cart = await Cart.findOne({userId:request.body.userId})
     if(!cart)
       cart=new Cart({userId:request.body.userId});
-      cart.foodList.push(request.body.productId)
+      cart.foodList.push({ProductId:request.body.id,qty:request.body.qty}) 
       cart.save()
     .then(results=>{
        console.log(results);

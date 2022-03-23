@@ -4,6 +4,7 @@ const userController = require('../controller/user.controller');
 const cartController = require("../controller/cart.controller");
 const foodPackages = require("../controller/foodPackage.controller");
 const favourateController = require("../controller/favourate.controller");
+const orderController = require("../controller/order.controller");
 const category = require("../controller/category.controller");
 const { route } = require('./admin.route');
 // const {body} =require('express-validator');
@@ -48,10 +49,12 @@ router.delete("/deletefavourate/:id", favourateController.deletefavourate);
 router.delete("/deleteOnefavourate/:id/:packageId", favourateController.deleteOnefavourate);
 
 router.get("/allfooditems", foodPackages.viewallfoodlist);
-router.post("/foodbyname", foodPackages.viewfoodbynamelist);
+router.get("/foodbyname", foodPackages.viewfoodbynamelist);
 router.get("/packages/:id", foodPackages.viewcategoryWise);
 
 router.post("/updateprofile", userController.updateprofile);
+router.post("/placeOrder", orderController.placeOrder);
+router.get("/orderHistory", orderController.orderHistory);
 
 
 module.exports = router;

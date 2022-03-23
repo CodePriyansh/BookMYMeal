@@ -13,8 +13,9 @@ exports.addfoodpackage = (request, response, next) => {
             packageprice:request.body.packageprice,
             packageqty:request.body.packageqty,
             packageDescription:request.body.packageDescription,
-            foodimage:"http://localhost:3000/images/"+request.file.filename,
-            categoryId:request.body.categoryId
+            foodimage:"http://localhost:3000/images/"+request.file.filename
+            // ,
+            // categoryId:request.body.categoryId
           })
           .then((result) => {
             return response.status(201).json(result);

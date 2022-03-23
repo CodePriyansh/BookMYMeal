@@ -22,10 +22,11 @@ const foodPackagesSchema = new mongoose.Schema({
   foodimage: {
     type: String,
     required: true
-  },
-  categoryId: {
-     type:Schema.Types.ObjectId,
-     require:true
   }
+  // ,
+  // categoryId: {
+  //    type:Schema.Types.ObjectId,
+  //    require:true
+  // }
 });
 module.exports = mongoose.model("foodPackages", foodPackagesSchema);

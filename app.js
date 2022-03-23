@@ -4,13 +4,14 @@ const port = process.env.PORT || 5555
 const mongoose = require('mongoose');
 
 mongoose.connect("mongodb+srv://CodePriyanshu786:pathak123@mucluster.utw9l.mongodb.net/BookMyMeal?retryWrites=true&w=majority");
+const adminRouter = require('./routes/admin.route');
+const userRouter = require('./routes/user.route');
 
 const client = require('twilio')("ACcb3d27c9eaeb98faa158ee1c8d35c683", "7548e5829cc79910cba9df345a667099");
 
  const session = require('express-session');
 const path = require('path');
-const adminRouter = require('./routes/admin.route');
-const userRouter = require('./routes/user.route');
+
 app.use(session({
     secret: 'bookmymeal'
 }));
